@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analyse Numérique</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css"/>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+</head>
+
+<body>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <i class="fas fa-square-root-alt"></i> Analyse Numérique
+    </a>
+
+    <div class="navbar-controls">
+
+      <!-- Sélecteur de thème -->
+      <div class="theme-selector">
+        <span style="font-size:0.8rem; color:var(--text-secondary); margin-right:4px;"
+              data-i18n="theme">Thème</span>
+        <div class="theme-dot light active" onclick="setTheme('light')" title="Clair"></div>
+        <div class="theme-dot dark"         onclick="setTheme('dark')"  title="Sombre"></div>
+        <div class="theme-dot blue"         onclick="setTheme('blue')"  title="Bleu"></div>
+        <div class="theme-dot green"        onclick="setTheme('green')" title="Vert"></div>
+      </div>
+
+      <!-- Sélecteur de langue -->
+      <select class="lang-select" onchange="setLang(this.value)">
+        <option value="fr">🇫🇷 Français</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="ar">🇩🇿 العربية</option>
+        <option value="sp">🇪🇸 Español</option>
+        <option value="de">🇩🇪 Deutsch</option>
+      </select>
+
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero">
+    <h1 data-aos="fade-down">
+      <span data-i18n="hero_title">Analyse Numérique</span>
+    </h1>
+    <p data-aos="fade-up" data-aos-delay="100" data-i18n="hero_sub">
+      Exploration interactive des grandes méthodes du calcul numérique.
+      Visualisez, calculez et comprenez chaque algorithme étape par étape.
+    </p>
+    <a href="#methodes" class="btn btn-primary" data-aos="fade-up" data-aos-delay="200">
+      <i class="fas fa-play"></i>
+      <span data-i18n="hero_btn">Découvrir les méthodes</span>
+    </a>
+  </section>
+
+  <!-- ═══════════ SECTION RACINES ═══════════ -->
+  <section class="section" id="methodes">
+    <h2 class="section-title" data-aos="fade-right">
+      <i class="fas fa-crosshairs" style="color:var(--accent)"></i>
+      <span data-i18n="sec_roots">Recherche de Racines</span>
+    </h2>
+    <p class="section-subtitle" data-i18n="sec_roots_sub">
+      Trouver les zéros d'une fonction
+    </p>
+
+    <div class="cards-grid">
+      <a href="pages/dichotomie.html" class="card" data-aos="fade-up">
+        <div class="card-icon">✂️</div>
+        <div class="card-title">Dichotomie</div>
+        <div class="card-desc" data-i18n="dicho_desc">
+          Méthode de bissection : diviser l'intervalle en deux à chaque itération
+          jusqu'à converger vers la racine.
+        </div>
+        <span class="card-tag">Recherche de racine</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION INTERPOLATION ═══════════ -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <h2 class="section-title" data-aos="fade-right">
+      <i class="fas fa-bezier-curve" style="color:var(--accent)"></i>
+      <span data-i18n="sec_interp">Interpolation</span>
+    </h2>
+    <p class="section-subtitle" data-i18n="sec_interp_sub">
+      Estimer des valeurs entre des points connus
+    </p>
+
+    <div class="cards-grid">
+      <a href="pages/lagrange.html" class="card" data-aos="fade-up">
+        <div class="card-icon">📐</div>
+        <div class="card-title">Lagrange</div>
+        <div class="card-desc" data-i18n="lagrange_desc">
+          Construire un polynôme passant exactement par un ensemble
+          de points donnés.
+        </div>
+        <span class="card-tag">Interpolation</span>
+      </a>
+
+      <a href="pages/newton.html" class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon">🔺</div>
+        <div class="card-title">Newton</div>
+        <div class="card-desc" data-i18n="newton_desc">
+          Interpolation par différences divisées, plus efficace pour
+          ajouter de nouveaux points.
+        </div>
+        <span class="card-tag">Interpolation</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════ SECTION INTÉGRATION ═══════════ -->
+  <section class="section">
+    <h2 class="section-title" data-aos="fade-right">
+      <i class="fas fa-infinity" style="color:var(--accent)"></i>
+      <span data-i18n="sec_integ">Intégration Numérique</span>
+    </h2>
+    <p class="section-subtitle" data-i18n="sec_integ_sub">
+      Approximer l'aire sous une courbe
+    </p>
+
+    <div class="cards-grid">
+      <a href="pages/simpson.html" class="card" data-aos="fade-up">
+        <div class="card-icon">〰️</div>
+        <div class="card-title">Simpson</div>
+        <div class="card-desc" data-i18n="simpson_desc">
+          Approximation de l'intégrale par des arcs de parabole,
+          très précise pour les fonctions régulières.
+        </div>
+        <span class="card-tag">Intégration</span>
+      </a>
+
+      <a href="pages/trapeze.html" class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon">🔷</div>
+        <div class="card-title">Trapèze</div>
+        <div class="card-desc" data-i18n="trapeze_desc">
+          Approximation de l'intégrale par des trapèzes,
+          simple et efficace pour des intervalles réguliers.
+        </div>
+        <span class="card-tag">Intégration</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <p data-i18n="footer">Projet TP — Analyse Numérique &nbsp;|&nbsp; Fait avec 🧠 et Python</p>
+  </footer>
+
+  <!-- ═══════════ SCRIPTS ═══════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    // ═══════════════════════════════════════
+    //  THEME MANAGER
+    // ═══════════════════════════════════════
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      document.querySelectorAll('.theme-dot').forEach(dot => {
+        dot.classList.remove('active');
+        if (dot.classList.contains(theme)) dot.classList.add('active');
+      });
+    }
+
+    function loadTheme() {
+      const saved = localStorage.getItem('theme') || 'light';
+      setTheme(saved);
+    }
+
+    // ═══════════════════════════════════════
+    //  LANGUAGE MANAGER — chemin ./locales/
+    // ═══════════════════════════════════════
+    async function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      try {
+        const response = await fetch(`./locales/${lang}.json`);
+        const t = await response.json();
+        document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        document.documentElement.setAttribute('lang', lang);
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) el.textContent = t[key];
+        });
+        const select = document.querySelector('.lang-select');
+        if (select) select.value = lang;
+      } catch (err) {
+        console.error('Erreur traduction:', err);
+      }
+    }
+
+    async function loadLang() {
+      const saved = localStorage.getItem('lang') || 'fr';
+      await setLang(saved);
+    }
+
+    // ═══════════════════════════════════════
+    //  INIT
+    // ═══════════════════════════════════════
+    document.addEventListener('DOMContentLoaded', async () => {
+      loadTheme();
+      await loadLang();
+    });
+
+    AOS.init({ duration: 600, once: true });
+  </script>
+
+</body>
+</html>

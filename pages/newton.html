@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newton — Analyse Numérique</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.27.0/full/pyodide.js"></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="navbar-brand">
+      <i class="fas fa-arrow-left"></i>
+      <span data-i18n="nav_home">Accueil</span>
+    </a>
+    <div class="navbar-controls">
+      <div class="theme-selector">
+        <span style="font-size:0.8rem; color:var(--text-secondary); margin-right:4px;"
+              data-i18n="theme">Thème</span>
+        <div class="theme-dot light active" onclick="setTheme('light')"></div>
+        <div class="theme-dot dark"         onclick="setTheme('dark')"></div>
+        <div class="theme-dot blue"         onclick="setTheme('blue')"></div>
+        <div class="theme-dot green"        onclick="setTheme('green')"></div>
+      </div>
+      <select class="lang-select" onchange="setLang(this.value)">
+        <option value="fr">🇫🇷 Français</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="ar">🇩🇿 العربية</option>
+        <option value="sp">🇪🇸 Español</option>
+        <option value="de">🇩🇪 Deutsch</option>
+      </select>
+    </div>
+  </nav>
+
+  <div class="method-header">
+    <h1>🔺 <span data-i18n="newton_title">Interpolation de Newton</span></h1>
+    <p data-i18n="newton_subtitle">Interpolation par différences divisées</p>
+    <small id="pyodide-status" style="color:var(--text-secondary);">⏳ <span data-i18n="loading">Chargement de Python...</span></small>
+  </div>
+
+  <div class="content-wrapper">
+
+    <div class="theory-box" data-aos="fade-up">
+      <h2><i class="fas fa-book"></i> <span data-i18n="theory">Principe théorique</span></h2>
+      <p data-i18n="newton_theory_p1">
+        L'interpolation de Newton utilise les différences divisées
+        pour construire un polynôme passant par n points.
+      </p>
+      <br/>
+      <p><strong data-i18n="algorithm">Algorithme :</strong></p>
+      <ul>
+        <li data-i18n="newton_step1">Construire la table des différences divisées</li>
+        <li data-i18n="newton_step2">Évaluer le polynôme au point demandé</li>
+        <li data-i18n="newton_step3">Résultat : P(x) = f[x0] + f[x0,x1](x-x0) + ...</li>
+      </ul>
+    </div>
+
+    <div class="code-block" data-aos="fade-up">
+      <div class="code-block-header">
+        <span class="code-block-title">🐍 newton.py</span>
+        <button class="btn-copy" onclick="copyCode(this)">📋 Copier</button>
+      </div>
+      <pre><code class="language-python">import numpy as np
+
+def newton(x, y, val):
+    """
+    x   : liste des noeuds
+    y   : liste des valeurs f(x)
+    val : point où on veut interpoler
+    """
+    n = len(x)
+    m = np.zeros((n, n))
+    m[:, 0] = y
+
+    for i in range(1, n):
+        for j in range(i, n):
+            m[j, i] = (m[j, i-1] - m[j-1, i-1]) / (x[j] - x[j-i])
+
+    result  = m[0, 0]
+    product = 1.0
+
+    for i in range(1, n):
+        product *= (val - x[i-1])
+        result  += m[i, i] * product
+
+    return round(float(result), 8), m.tolist()
+</code></pre>
+    </div>
+
+    <div class="interactive-zone" data-aos="fade-up">
+      <h2><i class="fas fa-play-circle"></i> <span data-i18n="interactive">Zone interactive</span></h2>
+      <p style="color:var(--text-secondary); margin-bottom:20px; font-size:0.9rem;"
+        data-i18n="interp_hint">
+        Entrez les points sous forme de listes séparées par des virgules.
+      </p>
+      <div class="input-grid">
+        <div class="input-group">
+          <label data-i18n="x_points">Points x (noeuds)</label>
+          <input type="text" id="val-x" value="0, 1, 2, 3" placeholder="ex: 0, 1, 2, 3"/>
+        </div>
+        <div class="input-group">
+          <label data-i18n="y_points">Valeurs y = f(x)</label>
+          <input type="text" id="val-y" value="1, 2, 5, 10" placeholder="ex: 1, 2, 5, 10"/>
+        </div>
+        <div class="input-group">
+          <label data-i18n="interp_pt">Point à interpoler</label>
+          <input type="number" id="val-point" value="1.5" step="any"/>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="calculate()">
+        <i class="fas fa-calculator"></i>
+        <span data-i18n="calculate">Calculer</span>
+      </button>
+      <div class="result-box" id="result-box">
+        <h3 data-i18n="result">Résultat</h3>
+        <div class="result-value" id="result-value"></div>
+        <p id="result-info" style="color:var(--text-secondary); margin-top:8px;"></p>
+      </div>
+    </div>
+
+    <div id="table-container" style="display:none;" data-aos="fade-up">
+      <h2 style="margin-bottom:16px; font-size:1.2rem; font-weight:600;">
+        <i class="fas fa-table"></i>
+        <span data-i18n="divided_diff_table">Table des différences divisées</span>
+      </h2>
+      <div class="table-wrapper">
+        <table>
+          <thead><tr id="table-head"></tr></thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="chart-container" id="chart-container" style="display:none;" data-aos="fade-up">
+      <h2 style="margin-bottom:16px; font-size:1.2rem; font-weight:600;">
+        <i class="fas fa-chart-line"></i>
+        <span data-i18n="graph">Polynôme d'interpolation de Newton</span>
+      </h2>
+      <canvas id="myChart"></canvas>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <a href="../index.html" class="btn btn-secondary">
+      <i class="fas fa-home"></i>
+      <span data-i18n="back_home">Retour à l'accueil</span>
+    </a>
+    <p style="margin-top:16px;" data-i18n="footer">Projet TP — Analyse Numérique</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/pyodide-loader.js"></script>
+  <script src="../js/newton.js"></script>
+  <script>
+    AOS.init({ duration: 600, once: true });
+    loadPyodideAndPackages();
+  </script>
+
+</body>
+</html>
