@@ -15,6 +15,44 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
 </head>
 
+<!-- ═══════════ FLOATING COLOR BUTTON ═══════════ -->
+  <button class="fab-color" id="fab-color" onclick="toggleColorPanel()" title="Personnaliser les couleurs">
+    🎨
+  </button>
+
+  <!-- ═══════════ COLOR PANEL ═══════════ -->
+  <div class="color-panel" id="color-panel">
+    <h3>🎨 Personnaliser le thème</h3>
+
+    <div class="color-row">
+      <label>Couleur d'accent</label>
+      <input type="color" id="picker-accent" value="#4f46e5"
+             oninput="previewPalette()"/>
+    </div>
+
+    <div class="color-row">
+      <label>Couleur de fond</label>
+      <input type="color" id="picker-bg" value="#ffffff"
+             oninput="previewPalette()"/>
+    </div>
+
+    <div class="color-row">
+      <label>Couleur du texte</label>
+      <input type="color" id="picker-text" value="#1a1a2e"
+             oninput="previewPalette()"/>
+    </div>
+
+    <div class="color-panel-actions">
+      <button class="btn-save-palette" onclick="savePalette()">+ Sauvegarder</button>
+      <button class="btn-reset-palette" onclick="setTheme('light')">↺ Reset</button>
+    </div>
+
+    <div class="saved-palettes">
+      <h4>Palettes sauvegardées</h4>
+      <div class="palettes-grid" id="palettes-grid"></div>
+    </div>
+  </div>
+
 <body>
 
   <!-- ═══════════ NAVBAR ═══════════ -->
@@ -31,8 +69,8 @@
               data-i18n="theme">Thème</span>
         <div class="theme-dot light active" onclick="setTheme('light')" title="Clair"></div>
         <div class="theme-dot dark"         onclick="setTheme('dark')"  title="Sombre"></div>
-        <div class="theme-dot blue"         onclick="setTheme('blue')"  title="Bleu"></div>
-        <div class="theme-dot green"        onclick="setTheme('green')" title="Vert"></div>
+        <div class="theme-dot system"       onclick="setTheme('system')" title="Système"></div>
+        <div class="theme-dot custom" onclick="toggleColorPanel()" title="Personnalisé"></div>
       </div>
 
       <!-- Sélecteur de langue -->
@@ -209,6 +247,7 @@
     document.addEventListener('DOMContentLoaded', async () => {
       loadTheme();
       await loadLang();
+      renderSavedPalettes();
     });
 
     AOS.init({ duration: 600, once: true });

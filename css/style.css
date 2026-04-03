@@ -34,32 +34,6 @@
   --shadow: 0 4px 24px rgba(0,0,0,0.3);
 }
 
-[data-theme="blue"] {
-  --bg-primary: #e8f4fd;
-  --bg-secondary: #d0e8f8;
-  --bg-card: #ffffff;
-  --text-primary: #0a2540;
-  --text-secondary: #2d6a9f;
-  --accent: #0077cc;
-  --accent-hover: #005fa3;
-  --accent-light: #cce5ff;
-  --border: #b3d4f0;
-  --shadow: 0 4px 24px rgba(0,119,204,0.1);
-}
-
-[data-theme="green"] {
-  --bg-primary: #e9f7ef;
-  --bg-secondary: #d4edda;
-  --bg-card: #ffffff;
-  --text-primary: #0a2e1a;
-  --text-secondary: #1e6b3a;
-  --accent: #16a34a;
-  --accent-hover: #15803d;
-  --accent-light: #bbf7d0;
-  --border: #86efac;
-  --shadow: 0 4px 24px rgba(22,163,74,0.1);
-}
-
 /* ═══════════════════════════════════════
    RESET & BASE
 ═══════════════════════════════════════ */
@@ -151,8 +125,10 @@ body {
 
 .theme-dot.light  { background: #ffffff; border: 2px solid #ccc; }
 .theme-dot.dark   { background: #1a1a2e; }
-.theme-dot.blue   { background: #0077cc; }
-.theme-dot.green  { background: #16a34a; }
+.theme-dot.system {
+  background: linear-gradient(135deg, #ffffff 50%, #1a1a2e 50%);
+  border: 2px solid #ccc;
+}
 
 /* Language selector */
 .lang-select {
@@ -598,5 +574,38 @@ tbody td {
 
   .method-header {
     padding: 32px 20px;
+  }
+}
+
+/* ═══════════════════════════════════════
+   SYSTÈME THEME
+═══════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] {
+    --bg-primary: #0f0f1a;
+    --bg-secondary: #1a1a2e;
+    --bg-card: #1e1e30;
+    --text-primary: #f0f0ff;
+    --text-secondary: #a0a0c0;
+    --accent: #818cf8;
+    --accent-hover: #6366f1;
+    --accent-light: #1e1e40;
+    --border: #2e2e45;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f7fa;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a2e;
+    --text-secondary: #555770;
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent-light: #eef2ff;
+    --border: #e2e8f0;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
   }
 }

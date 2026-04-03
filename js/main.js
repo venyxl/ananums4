@@ -26,7 +26,8 @@ function loadTheme() {
 async function setLang(lang) {
   localStorage.setItem('lang', lang);
   try {
-    const response = await fetch(`../locales/${lang}.json`);
+    const file = lang === 'es' ? 'sp' : lang;
+    const response = await fetch(`../locales/${file}.json`);
     const t = await response.json();
 
     document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
