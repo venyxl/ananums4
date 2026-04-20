@@ -1,79 +1,28 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="fr" data-theme="system">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Analyse Numérique</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css"/>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- AOS Animations -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
 </head>
-
-<!-- ═══════════ FLOATING COLOR BUTTON ═══════════ -->
-  <button class="fab-color" id="fab-color" onclick="toggleColorPanel()" title="Personnaliser les couleurs">
-    🎨
-  </button>
-
-  <!-- ═══════════ COLOR PANEL ═══════════ -->
-  <div class="color-panel" id="color-panel">
-    <h3>🎨 Personnaliser le thème</h3>
-
-    <div class="color-row">
-      <label>Couleur d'accent</label>
-      <input type="color" id="picker-accent" value="#4f46e5"
-             oninput="previewPalette()"/>
-    </div>
-
-    <div class="color-row">
-      <label>Couleur de fond</label>
-      <input type="color" id="picker-bg" value="#ffffff"
-             oninput="previewPalette()"/>
-    </div>
-
-    <div class="color-row">
-      <label>Couleur du texte</label>
-      <input type="color" id="picker-text" value="#1a1a2e"
-             oninput="previewPalette()"/>
-    </div>
-
-    <div class="color-panel-actions">
-      <button class="btn-save-palette" onclick="savePalette()">+ Sauvegarder</button>
-      <button class="btn-reset-palette" onclick="setTheme('light')">↺ Reset</button>
-    </div>
-
-    <div class="saved-palettes">
-      <h4>Palettes sauvegardées</h4>
-      <div class="palettes-grid" id="palettes-grid"></div>
-    </div>
-  </div>
 
 <body>
 
-  <!-- ═══════════ NAVBAR ═══════════ -->
   <nav class="navbar">
     <a href="index.html" class="navbar-brand">
-      <i class="fas fa-square-root-alt"></i> Analyse Numérique
+      <i class="fas fa-square-root-alt"></i> <span data-i18n="hero_title">Analyse Numérique</span>
     </a>
-
     <div class="navbar-controls">
-
-      <!-- Sélecteur de thème -->
       <div class="theme-selector">
-        <span style="font-size:0.8rem; color:var(--text-secondary); margin-right:4px;"
-              data-i18n="theme">Thème</span>
-        <div class="theme-dot light active" onclick="setTheme('light')" title="Clair"></div>
-        <div class="theme-dot dark"         onclick="setTheme('dark')"  title="Sombre"></div>
-        <div class="theme-dot system"       onclick="setTheme('system')" title="Système"></div>
-        <div class="theme-dot custom" onclick="toggleColorPanel()" title="Personnalisé"></div>
+        <span style="font-size:0.8rem;color:var(--text-secondary);margin-right:4px;" data-i18n="theme">Thème</span>
+        <div class="theme-dot light" onclick="setTheme('light')" title="Clair"></div>
+        <div class="theme-dot dark" onclick="setTheme('dark')" title="Sombre"></div>
+        <div class="theme-dot system active" onclick="setTheme('system')" title="Système"></div>
       </div>
-
-      <!-- Sélecteur de langue -->
       <select class="lang-select" onchange="setLang(this.value)">
         <option value="fr">🇫🇷 Français</option>
         <option value="en">🇬🇧 English</option>
@@ -81,126 +30,150 @@
         <option value="sp">🇪🇸 Español</option>
         <option value="de">🇩🇪 Deutsch</option>
       </select>
-
     </div>
   </nav>
 
-  <!-- ═══════════ HERO ═══════════ -->
   <section class="hero">
-    <h1 data-aos="fade-down">
-      <span data-i18n="hero_title">Analyse Numérique</span>
-    </h1>
+    <h1 data-aos="fade-down" data-i18n="hero_title">Analyse <span>Numérique</span></h1>
     <p data-aos="fade-up" data-aos-delay="100" data-i18n="hero_sub">
       Exploration interactive des grandes méthodes du calcul numérique.
       Visualisez, calculez et comprenez chaque algorithme étape par étape.
     </p>
     <a href="#methodes" class="btn btn-primary" data-aos="fade-up" data-aos-delay="200">
-      <i class="fas fa-play"></i>
-      <span data-i18n="hero_btn">Découvrir les méthodes</span>
+      <i class="fas fa-play"></i> <span data-i18n="hero_btn">Découvrir les méthodes</span>
     </a>
   </section>
 
-  <!-- ═══════════ SECTION RACINES ═══════════ -->
+  <!-- ═══ SECTION 1 : RACINES ═══ -->
   <section class="section" id="methodes">
     <h2 class="section-title" data-aos="fade-right">
-      <i class="fas fa-crosshairs" style="color:var(--accent)"></i>
-      <span data-i18n="sec_roots">Recherche de Racines</span>
+      <i class="fas fa-crosshairs" style="color:var(--accent)"></i> <span data-i18n="sec_roots">Recherche de Racines</span>
     </h2>
-    <p class="section-subtitle" data-i18n="sec_roots_sub">
-      Trouver les zéros d'une fonction
-    </p>
-
+    <p class="section-subtitle"><span data-i18n="sec_roots_sub">Trouver les zéros d'une fonction f(x) = 0</span></p>
     <div class="cards-grid">
+
       <a href="pages/dichotomie.html" class="card" data-aos="fade-up">
         <div class="card-icon">✂️</div>
-        <div class="card-title">Dichotomie</div>
-        <div class="card-desc" data-i18n="dicho_desc">
-          Méthode de bissection : diviser l'intervalle en deux à chaque itération
-          jusqu'à converger vers la racine.
-        </div>
-        <span class="card-tag">Recherche de racine</span>
+        <div class="card-title" data-i18n="dicho_card_title">Dichotomie</div>
+        <div class="card-desc">Méthode de bissection : diviser l'intervalle en deux à chaque itération jusqu'à converger
+          vers la racine.</div>
+        <span class="card-tag">Bracketing</span>
       </a>
+
+      <a href="pages/PointFixe.html" class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon">🎯</div>
+        <div class="card-title" data-i18n="pointfixe_card_title">Point Fixe</div>
+        <div class="card-desc">Trouver x* tel que g(x*) = x* par itérations successives xₙ₊₁ = g(xₙ) jusqu'à
+          convergence.</div>
+        <span class="card-tag">Itération</span>
+      </a>
+
     </div>
   </section>
 
-  <!-- ═══════════ SECTION INTERPOLATION ═══════════ -->
-  <section class="section" style="background: var(--bg-secondary);">
+  <!-- ═══ SECTION 2 : INTERPOLATION ═══ -->
+  <section class="section" style="background:var(--bg-secondary);">
     <h2 class="section-title" data-aos="fade-right">
-      <i class="fas fa-bezier-curve" style="color:var(--accent)"></i>
-      <span data-i18n="sec_interp">Interpolation</span>
+      <i class="fas fa-bezier-curve" style="color:var(--accent)"></i> <span data-i18n="sec_interp">Interpolation</span>
     </h2>
-    <p class="section-subtitle" data-i18n="sec_interp_sub">
-      Estimer des valeurs entre des points connus
-    </p>
-
+    <p class="section-subtitle"><span data-i18n="sec_interp_sub">Estimer des valeurs entre des points connus</span></p>
     <div class="cards-grid">
+
       <a href="pages/lagrange.html" class="card" data-aos="fade-up">
         <div class="card-icon">📐</div>
-        <div class="card-title">Lagrange</div>
-        <div class="card-desc" data-i18n="lagrange_desc">
-          Construire un polynôme passant exactement par un ensemble
-          de points donnés.
-        </div>
-        <span class="card-tag">Interpolation</span>
+        <div class="card-title" data-i18n="lagrange_card_title">Lagrange</div>
+        <div class="card-desc">Construire un polynôme passant exactement par un ensemble de points donnés via les
+          polynômes de base Lᵢ(x).</div>
+        <span class="card-tag"><span data-i18n="sec_interp">Interpolation</span> polynomiale</span>
       </a>
 
       <a href="pages/newton.html" class="card" data-aos="fade-up" data-aos-delay="100">
         <div class="card-icon">🔺</div>
-        <div class="card-title">Newton</div>
-        <div class="card-desc" data-i18n="newton_desc">
-          Interpolation par différences divisées, plus efficace pour
-          ajouter de nouveaux points.
-        </div>
-        <span class="card-tag">Interpolation</span>
+        <div class="card-title" data-i18n="newton_card_title">Newton</div>
+        <div class="card-desc"><span data-i18n="sec_interp">Interpolation</span> par différences divisées, plus efficace pour ajouter de nouveaux points
+          progressivement.</div>
+        <span class="card-tag">Différences divisées</span>
       </a>
+
     </div>
   </section>
 
-  <!-- ═══════════ SECTION INTÉGRATION ═══════════ -->
+  <!-- ═══ SECTION 3 : INTÉGRATION ═══ -->
   <section class="section">
     <h2 class="section-title" data-aos="fade-right">
-      <i class="fas fa-infinity" style="color:var(--accent)"></i>
-      <span data-i18n="sec_integ">Intégration Numérique</span>
+      <i class="fas fa-infinity" style="color:var(--accent)"></i> <span data-i18n="sec_integ">Intégration Numérique</span>
     </h2>
-    <p class="section-subtitle" data-i18n="sec_integ_sub">
-      Approximer l'aire sous une courbe
-    </p>
-
+    <p class="section-subtitle">Approximer l'aire sous une courbe ∫f(x)dx</p>
     <div class="cards-grid">
+
       <a href="pages/simpson.html" class="card" data-aos="fade-up">
         <div class="card-icon">〰️</div>
-        <div class="card-title">Simpson</div>
-        <div class="card-desc" data-i18n="simpson_desc">
-          Approximation de l'intégrale par des arcs de parabole,
-          très précise pour les fonctions régulières.
-        </div>
-        <span class="card-tag">Intégration</span>
+        <div class="card-title" data-i18n="simpson_card_title">Simpson</div>
+        <div class="card-desc">Approximation de l'intégrale par des arcs de parabole. Très précise pour les fonctions
+          régulières (ordre 4).</div>
+        <span class="card-tag">Ordre 4</span>
       </a>
 
       <a href="pages/trapeze.html" class="card" data-aos="fade-up" data-aos-delay="100">
         <div class="card-icon">🔷</div>
         <div class="card-title">Trapèze</div>
-        <div class="card-desc" data-i18n="trapeze_desc">
-          Approximation de l'intégrale par des trapèzes,
-          simple et efficace pour des intervalles réguliers.
-        </div>
-        <span class="card-tag">Intégration</span>
+        <div class="card-desc">Approximation de l'intégrale par des trapèzes. Simple et robuste pour les intervalles
+          réguliers (ordre 2).</div>
+        <span class="card-tag">Ordre 2</span>
       </a>
+
     </div>
   </section>
 
-  <!-- ═══════════ FOOTER ═══════════ -->
+  <!-- ═══ SECTION 4 : SYSTÈMES LINÉAIRES ═══ -->
+  <section class="section" style="background:var(--bg-secondary);">
+    <h2 class="section-title" data-aos="fade-right">
+      <i class="fas fa-th" style="color:var(--accent)"></i> Systèmes Linéaires
+    </h2>
+    <p class="section-subtitle">Résoudre Ax = B par factorisation matricielle</p>
+    <div class="cards-grid">
+
+      <a href="pages/lu.html" class="card" data-aos="fade-up">
+        <div class="card-icon">🔷</div>
+        <div class="card-title" data-i18n="lu_card_title">Décomposition LU</div>
+        <div class="card-desc">Factoriser A = L × U puis résoudre en deux étapes : descente Ly = B et remontée Ux = y.
+        </div>
+        <span class="card-tag">Factorisation</span>
+      </a>
+
+      <a href="pages/cholesky.html" class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon">💎</div>
+        <div class="card-title" data-i18n="cholesky_card_title">Cholesky</div>
+        <div class="card-desc">Factorisation A = RᵀR pour matrices symétriques définies positives. Deux fois plus
+          efficace que LU.</div>
+        <span class="card-tag">Symétrique définie positive</span>
+      </a>
+
+      <a href="pages/gauss.html" class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-icon">🔺</div>
+        <div class="card-title">Élimination de Gauss</div>
+        <div class="card-desc">Échelonner la matrice augmentée [A|b] en forme triangulaire supérieure, puis résoudre par
+          substitution arrière.</div>
+        <span class="card-tag">Échelonnement</span>
+      </a>
+
+      <a href="pages/GaussJordan.html" class="card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-icon">✨</div>
+        <div class="card-title" data-i18n="gaussjordan_card_title">Gauss-Jordan</div>
+        <div class="card-desc">Extension de Gauss qui produit la matrice réduite [I|X] — la solution X est lue
+          directement sans substitution.</div>
+        <span class="card-tag">Forme réduite</span>
+      </a>
+
+    </div>
+  </section>
+
   <footer class="footer">
-    <p data-i18n="footer">Projet TP — Analyse Numérique &nbsp;|&nbsp; Fait avec 🧠 et Python</p>
+    <p>Projet TP — Analyse Numérique &nbsp;|&nbsp; Fait avec 🧠 et Python</p>
   </footer>
 
-  <!-- ═══════════ SCRIPTS ═══════════ -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
   <script>
-    // ═══════════════════════════════════════
-    //  THEME MANAGER
-    // ═══════════════════════════════════════
     function setTheme(theme) {
       document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
@@ -209,20 +182,16 @@
         if (dot.classList.contains(theme)) dot.classList.add('active');
       });
     }
-
     function loadTheme() {
-      const saved = localStorage.getItem('theme') || 'light';
+      const saved = localStorage.getItem('theme') || 'system';
       setTheme(saved);
     }
-
-    // ═══════════════════════════════════════
-    //  LANGUAGE MANAGER — chemin ./locales/
-    // ═══════════════════════════════════════
     async function setLang(lang) {
       localStorage.setItem('lang', lang);
       try {
-        const response = await fetch(`./locales/${lang}.json`);
-        const t = await response.json();
+        const file = lang === 'es' ? 'sp' : lang;
+        const r = await fetch(`./locales/${file}.json`);
+        const t = await r.json();
         document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         document.documentElement.setAttribute('lang', lang);
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -231,27 +200,19 @@
         });
         const select = document.querySelector('.lang-select');
         if (select) select.value = lang;
-      } catch (err) {
-        console.error('Erreur traduction:', err);
-      }
+      } catch (e) { console.error(e); }
     }
-
     async function loadLang() {
       const saved = localStorage.getItem('lang') || 'fr';
       await setLang(saved);
     }
-
-    // ═══════════════════════════════════════
-    //  INIT
-    // ═══════════════════════════════════════
     document.addEventListener('DOMContentLoaded', async () => {
       loadTheme();
       await loadLang();
-      renderSavedPalettes();
     });
-
     AOS.init({ duration: 600, once: true });
   </script>
 
 </body>
+
 </html>
