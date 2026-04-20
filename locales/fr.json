@@ -1,7 +1,7 @@
 {
   "nav_home": "Accueil",
   "theme": "Thème",
-  "hero_title": "Analyse <span>Numérique</span>",
+  "hero_title": "Analyse Numérique",
   "hero_sub": "Exploration interactive des grandes méthodes du calcul numérique. Visualisez, calculez et comprenez chaque algorithme étape par étape.",
   "hero_btn": "Découvrir les méthodes",
   "sec_roots": "Recherche de Racines",
@@ -136,5 +136,10 @@
   "lu_card_title": "Décomposition LU",
   "lu_card_desc": "Factorisation de A en L (inférieure) et U (supérieure) pour résoudre Ax = b.",
   "cholesky_card_title": "Cholesky",
-  "cholesky_card_desc": "Factorisation A = RᵀR pour les matrices symétriques définies positives."
+  "cholesky_card_desc": "Factorisation A = RᵀR pour les matrices symétriques définies positives.",
+  "nav_brand": "Analyse Numérique",
+  "hero_title_p1": "Analyse",
+  "hero_title_p2": "Numérique",
+  "pointfixe_desc": "Exemple : pour résoudre x² - x - 2 = 0, entrez g(x) = sqrt(x+2) ou g(x) = 1 + 2/x",
+  "pointfixe_interactive_desc": "Entrez la fonction d'itération g(x) telle que g(x*) = x*. Exemple : pour x² - x - 2 = 0, entrez <code>sqrt(x+2)</code> ou <code>1 + 2/x</code>"
 }

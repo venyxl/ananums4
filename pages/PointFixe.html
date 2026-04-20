@@ -30,12 +30,14 @@
                 <option value="fr">🇫🇷 Français</option>
                 <option value="en">🇬🇧 English</option>
                 <option value="ar">🇩🇿 العربية</option>
-            </select>
+              <option value="sp">🇪🇸 Español</option>
+        <option value="de">🇩🇪 Deutsch</option>
+      </select>
         </div>
     </nav>
 
     <div class="method-header">
-        <h1 data-i18n="pointfixe_title">🔄 Méthode du Point Fixe</h1>
+        <h1>🔄 Méthode du Point Fixe</h1>
         <p data-i18n="pointfixe_subtitle">Trouver x tel que g(x) = x par itérations successives</p>
         <small id="pyodide-status" style="color:var(--text-secondary);">⏳ Chargement de Python...</small>
     </div>
@@ -83,8 +85,8 @@ def point_fixe(g, x0, tol=1e-8, max_iter=10000):
         <div class="interactive-zone" data-aos="fade-up">
             <h2><i class="fas fa-play-circle"></i> <span data-i18n="interactive">Zone interactive</span></h2>
             <p style="color:var(--text-secondary);margin-bottom:20px;font-size:0.9rem;">
-                Entrez la fonction d'itération g(x) telle que g(x*) = x*. Exemple : pour x² = 2, entrer
-                <code>np.sqrt(2)</code> (constante) ou <code>(x + 2/x)/2</code>
+                <span data-i18n="pointfixe_interactive_desc">Entrez la fonction d'itération g(x) telle que g(x*) = x*. Exemple : pour x² - x - 2 = 0, entrez <code>sqrt(x+2)</code> ou <code>1 + 2/x</code></span>
+                
             </p>
 
             <!-- CLAVIER MATHÉMATIQUE INLINE -->
@@ -164,7 +166,7 @@ def point_fixe(g, x0, tol=1e-8, max_iter=10000):
     <script src="../js/pyodide-loader.js"></script>
 
     <script src="../js/mathkeyboard.js"></script>
-    <script src="../js/PointFixe.js"></script>
+    <script src="../js/pointfixe.js"></script>
     <script>
         AOS.init({ duration: 600, once: true });
         loadPyodideAndPackages();

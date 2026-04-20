@@ -110,12 +110,14 @@
                 <option value="fr">🇫🇷 Français</option>
                 <option value="en">🇬🇧 English</option>
                 <option value="ar">🇩🇿 العربية</option>
-            </select>
+              <option value="sp">🇪🇸 Español</option>
+        <option value="de">🇩🇪 Deutsch</option>
+      </select>
         </div>
     </nav>
 
     <div class="method-header">
-        <h1 data-i18n="gauss_title">🔺 Élimination de Gauss</h1>
+        <h1>🔺 Élimination de Gauss</h1>
         <p data-i18n="gauss_subtitle">Résolution de systèmes linéaires par échelonnement et substitution arrière</p>
         <small id="pyodide-status" style="color:var(--text-secondary);">⏳ Chargement de Python...</small>
     </div>
@@ -231,7 +233,7 @@ def Gauss(A, b):
     <script src="../js/main.js"></script>
     <script src="../js/pyodide-loader.js"></script>
     <script src="../js/matrix-input.js"></script>
-    <script src="../js/Gauss.js"></script>
+    <script src="../js/gauss.js"></script>
     <script>
         AOS.init({ duration: 600, once: true });
         loadPyodideAndPackages();

@@ -1,7 +1,7 @@
 {
   "nav_home": "Home",
   "theme": "Theme",
-  "hero_title": "Numerical <span>Analysis</span>",
+  "hero_title": "Numerical Analysis",
   "hero_sub": "Interactive exploration of major numerical computation methods. Visualize, compute and understand each algorithm step by step.",
   "hero_btn": "Explore methods",
   "sec_roots": "Root Finding",
@@ -136,5 +136,10 @@
   "lu_card_title": "LU Decomposition",
   "lu_card_desc": "Factorization of A into L (lower) and U (upper) to solve Ax = b.",
   "cholesky_card_title": "Cholesky",
-  "cholesky_card_desc": "Factorization A = RᵀR for symmetric positive definite matrices."
+  "cholesky_card_desc": "Factorization A = RᵀR for symmetric positive definite matrices.",
+  "nav_brand": "Numerical Analysis",
+  "hero_title_p1": "Numerical",
+  "hero_title_p2": "Analysis",
+  "pointfixe_desc": "Example: to solve x² - x - 2 = 0, enter g(x) = sqrt(x+2) or g(x) = 1 + 2/x",
+  "pointfixe_interactive_desc": "Enter the iteration function g(x) such that g(x*) = x*. Example: for x² - x - 2 = 0, enter <code>sqrt(x+2)</code> or <code>1 + 2/x</code>"
 }

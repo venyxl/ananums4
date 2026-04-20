@@ -1,7 +1,7 @@
 {
   "nav_home": "Startseite",
   "theme": "Thema",
-  "hero_title": "Numerische <span>Analyse</span>",
+  "hero_title": "Numerische Analyse",
   "hero_sub": "Interaktive Erkundung der wichtigsten numerischen Berechnungsmethoden. Visualisieren, berechnen und verstehen Sie jeden Algorithmus Schritt für Schritt.",
   "hero_btn": "Methoden entdecken",
   "sec_roots": "Nullstellensuche",
@@ -136,5 +136,10 @@
   "lu_card_title": "LU-Zerlegung",
   "lu_card_desc": "Faktorisierung von A in L (unten) und U (oben) zur Lösung von Ax = b.",
   "cholesky_card_title": "Cholesky",
-  "cholesky_card_desc": "Faktorisierung A = RᵀR für symmetrische positiv definite Matrizen."
+  "cholesky_card_desc": "Faktorisierung A = RᵀR für symmetrische positiv definite Matrizen.",
+  "nav_brand": "Numerische Analyse",
+  "hero_title_p1": "Numerische",
+  "hero_title_p2": "Analyse",
+  "pointfixe_desc": "Beispiel: Um x² - x - 2 = 0 zu lösen, geben Sie g(x) = sqrt(x+2) oder g(x) = 1 + 2/x ein",
+  "pointfixe_interactive_desc": "Geben Sie die Iterationsfunktion g(x) ein, so dass g(x*) = x*. Beispiel: Für x² - x - 2 = 0 geben Sie <code>sqrt(x+2)</code> oder <code>1 + 2/x</code> ein"
 }
